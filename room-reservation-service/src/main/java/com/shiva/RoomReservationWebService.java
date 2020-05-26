@@ -17,15 +17,22 @@ import java.util.List;
 public class RoomReservationWebService {
 
     public static final String HTTP_ROOM_SERVICE_URL = "http://ROOM-SERVICE/rooms";
-    private RestTemplate restTemplate;
+    //private RestTemplate restTemplate;
 
-    public RoomReservationWebService(RestTemplate restTemplate) {
+  /*  public RoomReservationWebService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
+    }*/
+
+    private RoomClient roomClient;
+
+    public RoomReservationWebService(RoomClient roomClient) {
+        this.roomClient = roomClient;
     }
 
     @GetMapping
     public List<RoomReservation> getRoomReservations() {
-        List<Room> rooms = this.getAllRooms();
+        //List<Room> rooms = this.getAllRooms();
+        List<Room> rooms = this.roomClient.getAllRooms();
         List<RoomReservation> roomReservations = new ArrayList<>();
         rooms.forEach(room -> {
                     RoomReservation roomReservation = new RoomReservation();
@@ -38,9 +45,9 @@ public class RoomReservationWebService {
         return roomReservations;
     }
 
-    private List<Room> getAllRooms() {
+/*    private List<Room> getAllRooms() {
         ResponseEntity<List<Room>> roomResponse = this.restTemplate.exchange(HTTP_ROOM_SERVICE_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<Room>>() {
         });
         return roomResponse.getBody();
-    }
+    }*/
 }
