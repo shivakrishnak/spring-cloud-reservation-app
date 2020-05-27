@@ -26,4 +26,5 @@ public class Room {
 
     @Column(name = "ROOM_INFO")
     private String roomInfo;
+
 }
