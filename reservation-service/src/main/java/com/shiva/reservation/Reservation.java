@@ -24,7 +24,11 @@ public class Reservation {
     @Column(name = "GUEST_ID")
     private String guestId;
 
-    @Column(name = "RES_DATE")
-    private String resDate;
+    @Column(name = "RES_FROM_DATE")
+    private String resFromDate;
+
+    @Column(name = "RES_TO_DATE")
+    private String resToDate;
+
 
 }
