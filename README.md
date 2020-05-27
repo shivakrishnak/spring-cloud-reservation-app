@@ -53,3 +53,8 @@ http://localhost:9999/guest-service/guests
 http://localhost:9999/reservation-service/reservations
 
 http://localhost:9999/room-service/rooms
+
+
+#### Zipkin-service
+
+http://localhost:9411/zipkin/
