@@ -24,6 +24,10 @@ http://localhost:8800/swagger-ui.html
 
 http://localhost:8801/reservations
 
+http://localhost:8801/reservations/room/101
+
+http://localhost:8801/reservations/guest/401233
+
 http://localhost:8801/swagger-ui.html
 
 
@@ -31,7 +35,7 @@ http://localhost:8801/swagger-ui.html
 
 http://localhost:8802/rooms
 
-http://localhost:8801/swagger-ui.html
+http://localhost:8802/swagger-ui.html
 
 #### room-reservation-service 
 
