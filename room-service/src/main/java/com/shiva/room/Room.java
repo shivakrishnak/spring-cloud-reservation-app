@@ -24,6 +24,7 @@ public class Room {
     @Column(name = "ROOM_NUMBER")
     private String roomNumber;
 
-    @Column(name = "BED_INFO")
-    private String bedInfo;
+    @OneToOne
+    @JoinColumn(name = "ROOM_INFO")
+    private RoomInfo roomInfo;
 }

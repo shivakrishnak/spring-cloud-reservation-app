@@ -23,6 +23,11 @@ public class GuestController {
         this.guestRepository = guestRepository;
     }
 
+    @GetMapping(name = "/home")
+    public String getHome(){
+        return "home";
+    }
+
     @GetMapping
     public List<Guest> findAll(){
         log.info("Getting all guests data");
