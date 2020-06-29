@@ -1,5 +1,6 @@
-package com.shiva.reservation;
+package com.shiva.reservation.repository;
 
+import com.shiva.reservation.model.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

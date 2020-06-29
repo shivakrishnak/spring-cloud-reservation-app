@@ -1,5 +1,8 @@
-package com.shiva;
+package com.shiva.controller;
 
+import com.shiva.model.Room;
+import com.shiva.model.RoomReservation;
+import com.shiva.service.RoomClient;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;

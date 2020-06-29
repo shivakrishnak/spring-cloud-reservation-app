@@ -1,5 +1,6 @@
-package com.shiva;
+package com.shiva.service;
 
+import com.shiva.model.Room;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

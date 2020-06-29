@@ -1,4 +1,4 @@
-package com.shiva.reservation;
+package com.shiva.reservation.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
