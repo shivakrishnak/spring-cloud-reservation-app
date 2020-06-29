@@ -1,4 +1,4 @@
-package com.shiva.guest;
+package com.shiva.guest.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

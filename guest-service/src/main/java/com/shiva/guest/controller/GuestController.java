@@ -13,14 +13,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/guests")
-public class GuestsController {
+public class GuestController {
 
-    private static Logger log = LoggerFactory.getLogger(GuestsController.class);
+    private static Logger log = LoggerFactory.getLogger(GuestController.class);
 
     private GuestService guestService;
 
     @Autowired
-    public GuestsController(GuestService guestService) {
+    public GuestController(GuestService guestService) {
         this.guestService = guestService;
     }
 

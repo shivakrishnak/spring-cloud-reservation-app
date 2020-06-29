@@ -1,5 +1,7 @@
-package com.shiva.reservation;
+package com.shiva.reservation.controller;
 
+import com.shiva.reservation.model.Reservation;
+import com.shiva.reservation.service.ReservationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,29 +18,30 @@ public class ReservationController {
 
     private static Logger log = LoggerFactory.getLogger(ReservationController.class);
 
-    private ReservationRepository reservationRepository;
+    private ReservationService reservationService;
 
     @Autowired
-    public ReservationController(ReservationRepository reservationRepository) {
-        this.reservationRepository = reservationRepository;
+    public ReservationController(ReservationService reservationService) {
+        this.reservationService = reservationService;
     }
+
+    //TODO : fetch available rooms and all rooms from room-service and add it to seperate ReservationDto object
 
     @GetMapping
     public List<Reservation> findAll() {
         log.info("Getting all reservations data");
-        return reservationRepository.findAll();
+        return reservationService.findAll();
     }
 
     @GetMapping("/room/{roomId}")
     public Reservation findReservationByRoomId(@PathVariable("roomId") String roomId) {
         log.info("Getting reservations data for room : " + roomId);
-        return reservationRepository.findReservationByRoomId(roomId);
+        return reservationService.findReservationByRoomId(roomId);
     }
 
     @GetMapping("/guest/{guestId}")
     public Reservation findReservationByGuestId(@PathVariable("guestId") String guestId) {
         log.info("Getting reservations data for guest : " + guestId);
-        return reservationRepository.findReservationByGuestId(guestId);
+        return reservationService.findReservationByGuestId(guestId);
     }
-
 }
