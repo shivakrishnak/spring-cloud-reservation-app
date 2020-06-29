@@ -1,5 +1,6 @@
-package com.shiva.room;
+package com.shiva.room.repository;
 
+import com.shiva.room.model.Inclusion;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
