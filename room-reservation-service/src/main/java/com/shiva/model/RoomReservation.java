@@ -17,5 +17,5 @@ public class RoomReservation {
     private String roomNumber;
     private String firstName;
     private String lastName;
-    private Date date;
+    private String date;
 }
