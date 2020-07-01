@@ -25,8 +25,6 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
-    //TODO : fetch available rooms and all rooms from room-service and add it to seperate ReservationDto object
-
     @GetMapping
     public List<Reservation> findAll() {
         log.info("Getting all reservations data");

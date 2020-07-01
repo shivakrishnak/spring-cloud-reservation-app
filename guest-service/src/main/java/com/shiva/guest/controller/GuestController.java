@@ -29,7 +29,7 @@ public class GuestController {
         return "home";
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public List<Guest> findAll() {
         log.info("Getting all guests data");
         return guestService.findAll();

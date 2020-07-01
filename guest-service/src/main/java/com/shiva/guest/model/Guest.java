@@ -14,7 +14,8 @@ import javax.persistence.*;
 public class Guest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "guest_generator")
+    @SequenceGenerator(name = "guest_generator", sequenceName = "guest_sequence", initialValue = 400001)
     @Column(name = "GUEST_ID")
     private long id;
 
