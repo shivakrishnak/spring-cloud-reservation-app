@@ -30,7 +30,7 @@ public class GuestClientFeignAPITest {
 
     @Test
     public void testFeign() {
-        Guest guest = new Guest(1l, "shiva", "krishna", "test@test.com", "Smile Nagar", "India", "Happybad", "1234567890");
+        Guest guest = new Guest(1l, "shiva", "krishna", "test@test.com", "Smile Nagar", "India", "Happylore", "1234567890");
         assertThat(this.guestClientFeignAPI.getAllGuests()).contains(guest);
     }
 
