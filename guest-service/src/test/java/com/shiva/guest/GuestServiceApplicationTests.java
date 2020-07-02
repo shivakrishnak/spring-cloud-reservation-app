@@ -1,13 +1,13 @@
-//package com.shiva.guest;
-//
-//import org.junit.jupiter.api.Test;
-//import org.springframework.boot.test.context.SpringBootTest;
-//
-//@SpringBootTest
-//class GuestServiceApplicationTests {
-//
-//	@Test
-//	void contextLoads() {
-//	}
-//
-//}
+package com.shiva.guest;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class GuestServiceApplicationTests {
+
+	/*@Test
+	void contextLoads() {
+	}*/
+
+}

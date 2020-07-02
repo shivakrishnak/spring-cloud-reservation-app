@@ -41,10 +41,12 @@ public class RoomReservationWebService {
 
     @GetMapping
     public List<RoomReservation> getRoomReservations() {
+        log.info("Getting all room reservations");
         //List<Room> rooms = this.getAllRooms();
         List<RoomReservation> roomReservations = new ArrayList<>();
         List<Reservation> reservations = this.reservationClient.getAllReservations();
         reservations.forEach(reservation -> {
+                    log.info("checking reservation for " + reservation.getId());
                     RoomReservation roomReservation = new RoomReservation();
                     Optional<Room> room = getRoomForReservation(reservation.getRoomId());
                     if (room.isPresent()) {
@@ -52,7 +54,7 @@ public class RoomReservationWebService {
                     }
                     Optional<Guest> guest = getGuestForReservation(reservation.getGuestId());
                     if (guest.isPresent()) {
-                        setGuestData((Object) reservation, roomReservation, guest);
+                        setGuestData(reservation, roomReservation, guest);
                     }
                     roomReservations.add(roomReservation);
                 }
@@ -61,7 +63,7 @@ public class RoomReservationWebService {
         return roomReservations;
     }
 
-    private void setGuestData(Object reservation, RoomReservation roomReservation, Optional<Guest> guest) {
+    private void setGuestData(Reservation reservation, RoomReservation roomReservation, Optional<Guest> guest) {
         Guest guestData = guest.get();
         log.info("Guest : " + guestData);
         roomReservation.setGuestId(guestData.getId());
@@ -78,7 +80,7 @@ public class RoomReservationWebService {
         roomReservation.setRoomId(roomData.getId());
     }
 
-    private Optional<Guest> getGuestForReservation(String  guestId) {
+    private Optional<Guest> getGuestForReservation(String guestId) {
         log.info("Fetching Guest data for Id: " + guestId);
         Predicate<? super Guest> findGuest = guest -> guest.getId() == Long.parseLong(guestId);
         return getAllGuests().stream().filter(findGuest).findAny();

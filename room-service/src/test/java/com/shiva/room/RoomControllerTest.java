@@ -1,6 +1,6 @@
-package com.shiva.guest;
+package com.shiva.room;
 
-import com.shiva.guest.model.Guest;
+import com.shiva.room.model.Room;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -13,28 +13,22 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Log4j2
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = {"spring.cloud.config.enabled:false"})
 @TestPropertySource(locations = {"classpath:test.properties"})
-public class GuestControllerTest {
+public class RoomControllerTest {
 
     @Autowired
     TestRestTemplate rest;
 
     @Test
-    public void testFindAllGuests() {
-        List<Guest> guest = this.rest.getForObject("/guests", ArrayList.class);
-        log.info("Guest Data : " + guest);
-        assertTrue(guest.size() > 0);
+    public void testFindAllRooms() {
+        List<Room> rooms = this.rest.getForObject("/reservations", ArrayList.class);
+        log.info("Room Data : " + rooms);
+        assertTrue(rooms.size() > 0);
     }
 
-/*    @Test
-    public void getGuests(){
-        RestTemplate restTemplate = mock(RestTemplate.class);
-        doReturn().when(restTemplate).getForObject(eq("http://localhost:8800/guests"), resp))
-    }*/
 }
