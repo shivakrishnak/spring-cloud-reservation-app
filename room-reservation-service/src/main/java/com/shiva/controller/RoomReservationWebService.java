@@ -37,44 +37,45 @@ public class RoomReservationWebService {
         this.roomClient = roomClient;
         this.guestClient = guestClient;
         this.reservationClient = reservationClient;
-        log.info("========================================");
-        log.info(this.roomClient.getAllRooms());
-        log.info("___________________________________");
-        log.info(this.guestClient.getAllGuests());
-        log.info("___________________________________");
-        log.info(this.reservationClient.getAllReservations());
-        log.info("========================================");
     }
 
     @GetMapping
     public List<RoomReservation> getRoomReservations() {
         //List<Room> rooms = this.getAllRooms();
-        List<Reservation> reservations = this.reservationClient.getAllReservations();
         List<RoomReservation> roomReservations = new ArrayList<>();
+        List<Reservation> reservations = this.reservationClient.getAllReservations();
         reservations.forEach(reservation -> {
                     RoomReservation roomReservation = new RoomReservation();
                     Optional<Room> room = getRoomForReservation(reservation.getRoomId());
-                    Optional<Guest> guest = getGuestForReservation(reservation.getGuestId());
                     if (room.isPresent()) {
-                        Room roomData = room.get();
-                        log.info("Room : " + roomData);
-                        roomReservation.setRoomNumber(roomData.getRoomNumber());
-                        roomReservation.setRoomName(roomData.getName());
-                        roomReservation.setRoomId(roomData.getId());
+                        setRoomData(roomReservation, room);
                     }
+                    Optional<Guest> guest = getGuestForReservation(reservation.getGuestId());
                     if (guest.isPresent()) {
-                        Guest guestData = guest.get();
-                        log.info("Guest : " + guestData);
-                        roomReservation.setGuestId(guestData.getId());
-                        roomReservation.setFirstName(guestData.getFirstName());
-                        roomReservation.setLastName(guestData.getLastName());
-                        roomReservation.setDate(reservation.getResFromDate());
+                        setGuestData((Object) reservation, roomReservation, guest);
                     }
                     roomReservations.add(roomReservation);
                 }
         );
         log.info("All Reservations : " + roomReservations);
         return roomReservations;
+    }
+
+    private void setGuestData(Object reservation, RoomReservation roomReservation, Optional<Guest> guest) {
+        Guest guestData = guest.get();
+        log.info("Guest : " + guestData);
+        roomReservation.setGuestId(guestData.getId());
+        roomReservation.setFirstName(guestData.getFirstName());
+        roomReservation.setLastName(guestData.getLastName());
+        roomReservation.setDate(reservation.getResFromDate());
+    }
+
+    private void setRoomData(RoomReservation roomReservation, Optional<Room> room) {
+        Room roomData = room.get();
+        log.info("Room : " + roomData);
+        roomReservation.setRoomNumber(roomData.getRoomNumber());
+        roomReservation.setRoomName(roomData.getName());
+        roomReservation.setRoomId(roomData.getId());
     }
 
     private Optional<Guest> getGuestForReservation(String  guestId) {
