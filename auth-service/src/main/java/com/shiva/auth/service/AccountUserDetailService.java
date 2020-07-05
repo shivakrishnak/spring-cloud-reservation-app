@@ -7,7 +7,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AccountUserDetailService implements UserDetailsService {
 
     private AccountRepository accountRepository;
@@ -21,7 +23,7 @@ public class AccountUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return this.accountRepository.findByUsername(username)
                 .map(account -> new User(account.getUsername(), account.getPassword(), account.isActive(), account.isActive(), account.isActive(), account.isActive()
-                        , AuthorityUtils.createAuthorityList("ROLE_ADMINa", "ROLE_USER")))
+                        , AuthorityUtils.createAuthorityList("ROLE_ADMIN", "ROLE_USER")))
                 .orElseThrow(() -> new UsernameNotFoundException("No user name found with " + username));
     }
 }
